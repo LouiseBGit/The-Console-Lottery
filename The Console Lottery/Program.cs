@@ -9,6 +9,22 @@
             
         }
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         static void NumberGenerator()
         {
             Random winningNumber = new Random();
