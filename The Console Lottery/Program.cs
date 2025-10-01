@@ -45,7 +45,8 @@
 
         static int UserBuysTickets()
         {
-            int ticket;
+           
+                int ticket;
             Console.WriteLine("Vilken lott vill du ha lotter med lottnummer 1 - 50");
             while(!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1 || ticket > 50 )
             {
