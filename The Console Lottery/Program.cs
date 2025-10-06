@@ -6,7 +6,7 @@
 
         static int[] winningnumbers = new int[3];
         static Random winningNumber = new Random();
-
+        static int coins = 10;
 
         static void Main(string[] args)
         {
@@ -40,51 +40,56 @@
 
 
 
-            static void NumberGenerator()
+        static void NumberGenerator()
+        {
+            for (int spins = 0; spins <= 2; spins++)
             {
-                for (int spins = 0; spins <= 2; spins++)
-                {
-                    int resultNumber = winningNumber.Next(1, 51);
-                    winningnumbers[spins] = resultNumber;
-                }
+                int resultNumber = winningNumber.Next(1, 51);
+                winningnumbers[spins] = resultNumber;
             }
+        }
 
 
 
-            static int HowManyTickets()
+        static int HowManyTickets()
+        {
+            int ticket;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Välkommen till Lotteriet!");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"Du har just nu {coins} mynt!");
+            Console.WriteLine("Du får nu möjligheten att köpa lotter. Hur många lotter vill du köpa?: ");
+            while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1)
             {
-                int ticket;
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Välkommen till Lotteriet!");
-                Console.WriteLine();
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Du får nu möjligheten att köpa upp till 5 lotter. Hur många lotter vill du köpa?: ");
-                while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1 || ticket > 5)
+              Console.ForegroundColor = ConsoleColor.Red;
+              Console.WriteLine("Du måste välja minst 1 lott.");
+              Console.ForegroundColor = ConsoleColor.White;
+            }
+       
+            if (coins <= 0)
+            {
+            }                
+            userTicket = new int[ticket];
+            return ticket;
+        }
+
+        static void UserBuysTickets(int userTickets)
+        {
+            int ticket;
+
+            for (int i = 0; i < userTickets; i++)
+            {
+                Console.WriteLine("Vilken lott vill du ha med lottnummer 1 - 50");
+                while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1 || ticket > 50)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Du måste välja mellan 1-5 lotter.");
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Du måste välja ett lottonummer mellan 1 - 50! ");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
-
-                return ticket;
+                userTicket[i] = ticket;
             }
-
-            static void UserBuysTickets(int userTickets)
-            {
-                int ticket;
-
-                for (int i = 0; i < userTickets; i++)
-                {
-                    Console.WriteLine("Vilken lott vill du ha med lottnummer 1 - 50");
-                    while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1 || ticket > 50)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Du måste välja ett lottonummer mellan 1 - 50! ");
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    userTicket[i] = ticket;
-                }
-            }
+        }
 
         static void Compare()
         {
@@ -100,14 +105,17 @@
                         Console.ForegroundColor = ConsoleColor.Magenta;
                         Console.WriteLine("Rätt lottnummer var: " + userTicket[i]);
                         Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Rätt" + userTicket[i]);
+                        Coins += 5;
                     }
-                    
+
                 }
 
             }
         }
 
 
-        
+
+
     }
 }
