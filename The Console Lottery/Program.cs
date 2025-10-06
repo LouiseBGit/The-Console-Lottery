@@ -5,6 +5,8 @@
         static int[] userTicket = new int[5];
 
         static int[] winningnumbers = new int[3];
+        static Random winningNumber = new Random();
+
 
         static void Main(string[] args)
         {
@@ -34,7 +36,7 @@
 
             static void NumberGenerator()
             {
-                Random winningNumber = new Random();
+                
 
                 for (int spins = 0; spins <= 2; spins++)
                 {
