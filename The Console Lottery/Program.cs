@@ -8,20 +8,24 @@
 
         static void Main(string[] args)
         {
-            NumberGenerator();
-
-
-            int userTickets = HowManyTickets();
-            UserBuysTickets(userTickets);
-            
-            foreach (int t in winningnumbers)
+            string? restart = "";
+            do
             {
-                Console.WriteLine("nummer: " + t);
+                NumberGenerator();
+
+                int userTickets = HowManyTickets();
+                UserBuysTickets(userTickets);
+
+                foreach (int t in winningnumbers)
+                {
+                    Console.WriteLine("nummer: " + t);
+                }
+                Compare();
+                Console.WriteLine("Vill du spela en omgång till? y/n");
+                restart = Console.ReadLine();
+                Console.Clear();
             }
-            Compare();
-
-
-
+            while (restart == "y");
         }
 
 
