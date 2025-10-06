@@ -6,7 +6,7 @@
 
         static int[] winningnumbers = new int[3];
         static Random winningNumber = new Random();
-
+        static int money = 10;
 
         static void Main(string[] args)
         {
@@ -89,6 +89,7 @@
                     {
                         count++;
                         Console.WriteLine("Rätt" + userTicket[i]);
+                        money += 5;
                     }
                     
                 }
@@ -96,6 +97,7 @@
             }
         }
 
+        
 
         
     }
