@@ -8,16 +8,17 @@
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-            Console.Write("test");
+            NumberGenerator();
 
 
             int userTickets = HowManyTickets();
             UserBuysTickets(userTickets);
-            foreach (int t in userTicket)
+            
+            foreach (int t in winningnumbers)
             {
-                Console.WriteLine(t);
+                Console.WriteLine("nummer: " + t);
             }
+            Compare();
 
 
 
@@ -77,6 +78,24 @@
                     Console.WriteLine(userTicket[i]);
                 }
             }
+        //Inte puchad.. råkade göra Compare i main.. hur gör jag nu??!
+        static void Compare()
+        {
+            int count = 0;
+            for (int i = 0; i < userTicket.Length; i++)
+            {
+                for (int j = 0; j < winningnumbers.Length; j++)
+                {
+                    if (userTicket[i] == winningnumbers[j])
+                    {
+                        count++;
+                        Console.WriteLine("Rätt" + userTicket[i]);
+                    }
+                    
+                }
+
+            }
+        }
 
 
         
