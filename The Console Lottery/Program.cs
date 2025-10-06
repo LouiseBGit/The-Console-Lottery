@@ -6,7 +6,7 @@
 
         static int[] winningnumbers = new int[3];
         static Random winningNumber = new Random();
-        static int money = 10;
+        static int Coins = 10;
 
         static void Main(string[] args)
         {
@@ -54,6 +54,7 @@
             static int HowManyTickets()
             {
                 int ticket;
+            
                 Console.WriteLine("Du får nu möjligheten att köpa upp till 5 lotter. Hur många lotter vill du köpa?: ");
                 while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1 || ticket > 5)
                 {
@@ -89,7 +90,7 @@
                     {
                         count++;
                         Console.WriteLine("Rätt" + userTicket[i]);
-                        money += 5;
+                        Coins += 5;
                     }
                     
                 }
