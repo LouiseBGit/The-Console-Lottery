@@ -23,7 +23,9 @@
                     Console.WriteLine("nummer: " + t);
                 }
                 Compare();
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Vill du spela en omgång till? y/n");
+                Console.ForegroundColor = ConsoleColor.White;
                 restart = Console.ReadLine();
                 Console.Clear();
             }
@@ -44,8 +46,6 @@
                 {
                     int resultNumber = winningNumber.Next(1, 51);
                     winningnumbers[spins] = resultNumber;
-
-                    Console.WriteLine(resultNumber);
                 }
             }
 
@@ -54,10 +54,16 @@
             static int HowManyTickets()
             {
                 int ticket;
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Välkommen till Lotteriet!");
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Du får nu möjligheten att köpa upp till 5 lotter. Hur många lotter vill du köpa?: ");
                 while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1 || ticket > 5)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Du måste välja mellan 1-5 lotter.");
+                    Console.ForegroundColor = ConsoleColor.Red;
                 }
 
                 return ticket;
@@ -72,7 +78,9 @@
                     Console.WriteLine("Vilken lott vill du ha med lottnummer 1 - 50");
                     while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1 || ticket > 50)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Du måste välja ett lottonummer mellan 1 - 50! ");
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     userTicket[i] = ticket;
                 }
@@ -88,7 +96,10 @@
                     if (userTicket[i] == winningnumbers[j])
                     {
                         count++;
-                        Console.WriteLine("Rätt" + userTicket[i]);
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("Rätt lottnummer var: " + userTicket[i]);
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     
                 }
