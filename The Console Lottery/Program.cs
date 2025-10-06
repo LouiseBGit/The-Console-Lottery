@@ -71,10 +71,9 @@
                         Console.WriteLine("Du måste välja ett lottonummer mellan 1 - 50! ");
                     }
                     userTicket[i] = ticket;
-                    Console.WriteLine(userTicket[i]);
                 }
             }
-        //Inte puchad.. råkade göra Compare i main.. hur gör jag nu??!
+
         static void Compare()
         {
             int count = 0;
