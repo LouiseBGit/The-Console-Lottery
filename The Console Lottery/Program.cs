@@ -54,12 +54,13 @@
             static int HowManyTickets()
             {
                 int ticket;
-                Console.WriteLine("Du får nu möjligheten att köpa upp till 5 lotter. Hur många lotter vill du köpa?: ");
-                while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1 || ticket > 5)
+                Console.WriteLine("Du får nu möjligheten att köpa lotter. Hur många lotter vill du köpa?: ");
+                while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1)
                 {
-                    Console.WriteLine("Du måste välja mellan 1-5 lotter.");
+                    Console.WriteLine("Du måste välja minst 1 lott.");
                 }
 
+                userTicket = new int[ticket];
                 return ticket;
             }
 
