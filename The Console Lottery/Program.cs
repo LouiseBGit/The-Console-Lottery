@@ -36,19 +36,13 @@
 
             static void NumberGenerator()
             {
-                
-
                 for (int spins = 0; spins <= 2; spins++)
                 {
                     int resultNumber = winningNumber.Next(1, 51);
                     winningnumbers[spins] = resultNumber;
 
                     Console.WriteLine(resultNumber);
-
                 }
-
-
-
             }
 
 
