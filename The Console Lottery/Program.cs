@@ -6,7 +6,7 @@
 
         static int[] winningnumbers = new int[3];
         static Random winningNumber = new Random();
-
+        static int coins = 10;
 
         static void Main(string[] args)
         {
@@ -38,46 +38,50 @@
 
 
 
-            static void NumberGenerator()
+        static void NumberGenerator()
+        {
+            for (int spins = 0; spins <= 2; spins++)
             {
-                for (int spins = 0; spins <= 2; spins++)
-                {
-                    int resultNumber = winningNumber.Next(1, 51);
-                    winningnumbers[spins] = resultNumber;
+                int resultNumber = winningNumber.Next(1, 51);
+                winningnumbers[spins] = resultNumber;
 
-                    Console.WriteLine(resultNumber);
-                }
+                Console.WriteLine(resultNumber);
             }
+        }
 
 
 
-            static int HowManyTickets()
+        static int HowManyTickets()
+        {
+            int ticket;
+            Console.WriteLine($"Du har just nu {coins} mynt!");
+            Console.WriteLine("Du får nu möjligheten att köpa lotter. Hur många lotter vill du köpa?: ");
+            while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1)
             {
-                int ticket;
-                Console.WriteLine("Du får nu möjligheten att köpa lotter. Hur många lotter vill du köpa?: ");
-                while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1)
-                {
-                    Console.WriteLine("Du måste välja minst 1 lott.");
-                }
-
-                userTicket = new int[ticket];
-                return ticket;
+              Console.WriteLine("Du måste välja minst 1 lott.");
             }
-
-            static void UserBuysTickets(int userTickets)
+       
+            if (coins <= 0)
             {
-                int ticket;
+            }                
+            userTicket = new int[ticket];
+            return ticket;
+        }
 
-                for (int i = 0; i < userTickets; i++)
+        static void UserBuysTickets(int userTickets)
+        {
+            int ticket;
+
+            for (int i = 0; i < userTickets; i++)
+            {
+                Console.WriteLine("Vilken lott vill du ha med lottnummer 1 - 50");
+                while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1 || ticket > 50)
                 {
-                    Console.WriteLine("Vilken lott vill du ha med lottnummer 1 - 50");
-                    while (!int.TryParse(Console.ReadLine(), out ticket) || ticket < 1 || ticket > 50)
-                    {
-                        Console.WriteLine("Du måste välja ett lottonummer mellan 1 - 50! ");
-                    }
-                    userTicket[i] = ticket;
+                    Console.WriteLine("Du måste välja ett lottonummer mellan 1 - 50! ");
                 }
+                userTicket[i] = ticket;
             }
+        }
 
         static void Compare()
         {
@@ -90,14 +94,16 @@
                     {
                         count++;
                         Console.WriteLine("Rätt" + userTicket[i]);
+                        Coins += 5;
                     }
-                    
+
                 }
 
             }
         }
 
 
-        
+
+
     }
 }
