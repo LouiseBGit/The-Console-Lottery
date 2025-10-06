@@ -78,7 +78,7 @@
                     Console.WriteLine(userTicket[i]);
                 }
             }
-
+        //Inte puchad.. råkade göra Compare i main.. hur gör jag nu??!
         static void Compare()
         {
             int count = 0;
